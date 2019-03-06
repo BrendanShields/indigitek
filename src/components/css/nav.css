@@ -1,0 +1,16 @@
+ul li {
+    font-family: monospace;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 2rem;
+    letter-spacing: .2rem;
+}
+
+.nav {
+    position: 'absolute';
+    left: '0%';
+    top: '-38%';
+    height: '50%';
+    width: '100%';
+    background: 'lightseagreen';
+}

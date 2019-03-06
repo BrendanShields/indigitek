@@ -8,6 +8,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+h3 {
+  display: inline;
+  margin: 20px !important;
+}
+
+h3:hover {
+  color: orange !important;
+}
+
+@media screen and (max-width: 600px) {
+h3 {
+  display: block;
+}
+}
+.script-box {
+  will-change: width, height, left, top;
+  position: relative;
+}
+
 article,
 aside,
 details,

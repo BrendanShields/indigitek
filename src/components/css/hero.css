@@ -1,0 +1,45 @@
+.hero-container {
+    margin: 0 auto;
+    height: 95vh;
+    width: 95vw;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: Overpass Mono, monospace;
+    font-weight: 400;
+    font-size: 22px;
+    font-size: 1.57143rem;
+    letter-spacing: 0;
+  }
+  
+  .hero-container span {
+    color: darkorange;
+  }
+  
+  .hero-container {
+    color: darkorange;
+  }
+  
+  @media only screen and (min-width: 700px) {
+    .hero-center-text {
+      max-width: 40vw;
+    }
+    h2 {
+    font-size: 1.2rem;
+    }
+  }
+  
+  p {
+    font-family: monospace !important;
+    font-size: 1rem;
+    font-weight: 150;
+  }
+  
+  h2 {
+    color: black;
+    font-family: monospace Mono,monospace;
+    font-weight: 600;
+    letter-spacing: 1rem;
+    font-size: 3.71429rem;
+  }
+  
