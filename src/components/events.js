@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useSpring, Keyframes, animated as a} from 'react-spring'
+import { useSpring, animated as a} from 'react-spring'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import './css/card.css'
@@ -11,7 +11,6 @@ const [events, setEvents] = useState()
 const [initial, setinit] = useState(true)
 const [user, setUser] = useState()
 const [opened, set] = useState(false)
-const [current_item, setItem] = useState(null)
 
 // check if user logged in.
 if (localStorage.User && !user) {
@@ -19,9 +18,9 @@ if (localStorage.User && !user) {
 }
 
 // Request All Events
-const x = useEffect(() => {
+    useEffect(() => {
     const postDataToApi = async (req, res) => {
-        const requestBody = { 
+    const requestBody = { 
         query: `
             query {
                 events {
@@ -56,36 +55,7 @@ const x = useEffect(() => {
   return postDataToApi()
 }, [])
 
-const height = document.body.scrollHeight;
-const newheight = height.toString()
-const props = useSpring({
-    to: async (next, cancel) => {
-    if (!opened) {
-    await next({ zIndex: '100', position: 'absolute', top: '20%', left: '0%', height: '0%', width:
-    '100%', backgroundColor: 'rgba(0,0,0,1)'})
-    await next ({ visibility: 'hidden'})
-    setinit(false)
-    } else if (opened && initial) {
-    await next({ visibility: 'visible', zIndex: '100', position: 'absolute', left: '0%', top: '0%', height: '0%', width:
-    '100%', background: '#E1F5FE'})
-    setinit(false)
-    } else {
-    await next({ visibility: 'visible', zIndex: '100', position: 'absolute', left: '0%', top: '0%', height: '0%', width:
-    '100%', backgroundColor: '#E1F5FE'})
-       }
-    }
-})
 
-useEffect(() => {
-    setTimeout(set(true));
-}, []);
-
-const ret = function(event) {
-    set(state => !state)
-    setItem(event)
-}
-
-console.log(user)
 return (
   <Layout>
     <SEO title="Page two" />
