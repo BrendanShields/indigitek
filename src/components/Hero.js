@@ -2,7 +2,8 @@ import React from 'react'
 
 // css
 import '../components/css/hero.css'
-
+import topRight from '../images/Untitled-1.jpg'
+import Nav from './nav'
 
 export default () => (
 
@@ -14,8 +15,11 @@ export default () => (
       backgroundColor: 'white'
   }}>
 <div className="hero-center-text">
+<Nav />
   <h2>INDIGI<span>TEK</span></h2>
-  <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim  </p>
+  <p> Our mission to increase technology employment pathways for ATSI people and create 300 jobs for them within industry by 2022 </p>
 </div>
+
+<img src={topRight} alt="indigenous art" style={{position: 'absolute', height: "600px", right: '0px', top: '0%;'}}/>
 </div>
 )

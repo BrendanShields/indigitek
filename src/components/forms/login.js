@@ -6,17 +6,18 @@ function Form() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [api, setAPI] = useState()
 
   const submitHandler = (event) => {
     event.preventDefault()
     const postDataToApi = async (req, res) => {
         const requestBody = { 
         query: `
-            mutation {
-                createUser(userInput: {email: "${email}", password: "${password}"}) {
-                    _id
-                    email
+            query {
+                login(email: "${email}", password: "${password}") {
+                    userId
+                    token
+                    tokenExpiration
                 }
             }
           `
@@ -32,7 +33,9 @@ function Form() {
             throw new Error('Failed!');
         } return res.json();
     }).then(resData => {
-        console.log(resData)
+        localStorage.setItem('Authorisation', resData.data.login.token)
+        localStorage.setItem('User', resData.data.login.userId)
+        window.location.reload()
     }).catch(err => {
         console.log(err)
     })   
@@ -40,35 +43,11 @@ function Form() {
     postDataToApi()
 }
 
+console.log(localStorage.Authorisation)
+
 return (
     
     <form onSubmit={e => submitHandler(e)}>
-     <div className="group">
-    <input
-        value={firstName}
-        onChange={e => setFirstName(e.target.value)}
-        placeholder="First name"
-        type="text"
-        name="firstName"
-        required
-     />
-       <span className="highlight"></span>
-      <span className="bar"></span>
-      </div>
-
-    <div className="group">
-    <input
-        value={lastName}
-        onChange={e => setLastName(e.target.value)}
-        placeholder="Last name"
-        type="text"
-        name="lastName"
-        required
-    />
-      <span className="highlight"></span>
-      <span className="bar"></span>
-      </div>
-
       <div className="group">      
       <input
         value={email}
